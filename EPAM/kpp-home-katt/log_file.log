@@ -1,0 +1,114 @@
+
+2017-03-19 21:35:07 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:35:07 INFO  UserLogic:76 - email and password are correct
+2017-03-19 21:35:07 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:35:40 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:35:45 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:35:45 ERROR JDBCUserDAO:117 - query does not return ResultSet
+2017-03-19 21:37:30 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:37:30 INFO  UserLogic:76 - email and password are correct
+2017-03-19 21:37:30 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:37:39 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:37:39 ERROR JDBCUserDAO:115 - query does not return ResultSet
+2017-03-19 21:38:08 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:38:08 INFO  UserLogic:76 - email and password are correct
+2017-03-19 21:38:08 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:38:42 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:39:01 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:39:01 ERROR JDBCDocumentDAO:64 - [SQLITE_ERROR] SQL error or missing database (unrecognized token: "';")
+2017-03-19 21:39:16 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:39:56 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:39:56 ERROR JDBCDocumentDAO:64 - [SQLITE_ERROR] SQL error or missing database (unrecognized token: "';")
+2017-03-19 21:40:22 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:40:55 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:40:58 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:40:58 ERROR JDBCUserDAO:115 - query does not return ResultSet
+2017-03-19 21:41:31 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:41:31 INFO  UserLogic:76 - email and password are correct
+2017-03-19 21:41:31 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:41:42 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 21:41:42 ERROR JDBCUserDAO:115 - query does not return ResultSet
+2017-03-19 23:09:39 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 23:10:16 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 23:10:16 ERROR JDBCUserDAO:115 - ResultSet closed
+2017-03-19 23:24:08 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 23:25:56 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 23:29:30 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 23:33:34 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 23:33:34 INFO  UserLogic:76 - email and password are correct
+2017-03-19 23:33:34 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-19 23:34:19 INFO  JDBCDocumentDAO:24 - connecting from database
+2017-03-20 01:14:15 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 01:14:15 INFO  UserLogic:76 - email and password are correct
+2017-03-20 01:14:15 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 01:18:02 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 01:18:02 ERROR JDBCUserDAO:144 - query does not return ResultSet
+2017-03-20 01:18:23 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 01:20:07 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 01:20:07 ERROR JDBCUserDAO:144 - ResultSet closed
+2017-03-20 08:17:41 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:19:46 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:19:46 ERROR JDBCUserDAO:144 - ResultSet closed
+2017-03-20 08:20:09 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:20:09 INFO  UserLogic:101 - email and password are correct
+2017-03-20 08:20:09 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:21:09 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:21:43 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:22:27 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:22:27 ERROR JDBCDocumentDAO:81 - query does not return ResultSet
+2017-03-20 08:22:31 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:22:31 ERROR JDBCDocumentDAO:81 - query does not return ResultSet
+2017-03-20 08:22:54 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:22:54 ERROR JDBCUserDAO:144 - ResultSet closed
+2017-03-20 08:44:38 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:44:38 INFO  UserLogic:101 - email and password are correct
+2017-03-20 08:44:38 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:45:04 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:45:05 ERROR JDBCUserDAO:144 - query does not return ResultSet
+2017-03-20 08:45:28 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:45:28 INFO  UserLogic:101 - email and password are correct
+2017-03-20 08:45:28 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:46:33 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:47:44 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:49:06 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:50:46 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:51:31 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:53:27 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:54:15 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 08:54:15 ERROR JDBCUserDAO:144 - ResultSet closed
+2017-03-20 09:02:48 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:04:06 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:04:06 ERROR JDBCUserDAO:144 - ResultSet closed
+2017-03-20 09:04:39 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:04:40 INFO  UserLogic:101 - email and password are correct
+2017-03-20 09:04:40 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:05:21 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:05:21 ERROR JDBCDocumentDAO:79 - query does not return ResultSet
+2017-03-20 09:05:32 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:05:32 ERROR JDBCUserDAO:144 - ResultSet closed
+2017-03-20 09:06:00 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:06:00 ERROR JDBCUserDAO:81 - ResultSet closed
+2017-03-20 09:06:00 INFO  UserLogic:104 - email and password are not correct
+2017-03-20 09:06:05 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:06:05 INFO  UserLogic:101 - email and password are correct
+2017-03-20 09:06:05 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:06:35 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:06:35 ERROR JDBCUserDAO:144 - query does not return ResultSet
+2017-03-20 09:08:19 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:08:20 INFO  UserLogic:101 - email and password are correct
+2017-03-20 09:08:20 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:10:16 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:11:44 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:11:44 ERROR JDBCUserDAO:144 - ResultSet closed
+2017-03-20 09:12:12 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:12:59 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:12:59 ERROR JDBCUserDAO:144 - ResultSet closed
+2017-03-20 09:13:26 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:13:26 INFO  UserLogic:101 - email and password are correct
+2017-03-20 09:13:26 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:14:15 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:14:53 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:14:53 ERROR JDBCUserDAO:144 - ResultSet closed
+2017-03-20 09:18:15 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:19:25 INFO  JDBCDocumentDAO:28 - connecting from database
+2017-03-20 09:19:25 ERROR JDBCUserDAO:144 - ResultSet closed
