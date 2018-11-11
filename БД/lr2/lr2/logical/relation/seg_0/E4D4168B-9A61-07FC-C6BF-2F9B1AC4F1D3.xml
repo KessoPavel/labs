@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Employee responsibility" directorySegmentName="seg_0" id="E4D4168B-9A61-07FC-C6BF-2F9B1AC4F1D3">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:20:57 UTC</createdTime>
+<ownerDesignName>lr2</ownerDesignName>
+<engineerTo>
+<item key="6519ED28-27A7-32CC-9D3D-90FFC082617C" value="true"/>
+</engineerTo>
+<sourcePk>61CF0460-ED0B-3036-7D30-85A90402DA13</sourcePk>
+<targetPk>03E26C91-BAB3-CAE4-CF95-9727E4838CC0</targetPk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>90A6F051-B887-D957-D0D6-DA85DAD8628C</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>B9325202-90CD-D049-F5FB-39AF86BBF131</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

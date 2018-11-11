@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Room contain furniture" directorySegmentName="seg_0" id="3FAE2FF4-5AF0-E6BE-79EA-A85BB7B62FA0">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:29:45 UTC</createdTime>
+<ownerDesignName>lr2</ownerDesignName>
+<engineerTo>
+<item key="6519ED28-27A7-32CC-9D3D-90FFC082617C" value="true"/>
+</engineerTo>
+<sourcePk>3095F996-1E8D-6265-8478-A1B68CE88B13</sourcePk>
+<targetPk>6AC5F009-A1ED-9821-D853-9F08A138187F</targetPk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>B80B26DF-44E1-E7CD-816B-AC7C5AE6AE3E</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>3919D0C4-132F-CFBC-74B3-5D69F84B465F</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

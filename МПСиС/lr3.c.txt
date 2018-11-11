@@ -1,0 +1,231 @@
+#include <msp430.h>
+
+int lpmFlag = 0;
+#define BOOL int
+#define TRUE 1
+#define FALSE 0
+
+#define LED1 BIT0 //P1.0
+#define LED3 BIT2 //P8.2
+#define LED4 BIT1 //P1.1
+#define LED5 BIT2 //P1.2
+#define BUT1 BIT7 //P1.7
+#define BUT2 BIT2 //P2.2
+
+BOOL BUT1_INT = FALSE;
+BOOL BUT2_INT = FALSE;
+
+
+
+BOOL lowPowerMode = FALSE;
+BOOL vCoreLow = FALSE;
+
+
+
+
+
+inline void vCoreUp (unsigned int level)
+{
+    // Open PMM registers for write access
+    PMMCTL0_H = PMMPW_H;
+    // Make sure no flags are set for iterative sequences
+//  while ((PMMIFG & SVSMHDLYIFG) == 0);
+//  while ((PMMIFG & SVSMLDLYIFG) == 0);
+    // Set SVS/SVM high side new level
+    SVSMHCTL = SVSHE | SVSHRVL_1 * level | SVMHE | SVSMHRRL_1 * level;
+    // Set SVM low side to new level
+    SVSMLCTL = SVSLE | SVMLE | SVSMLRRL_1 * level;
+    // Wait till SVM is settled
+    while ((PMMIFG & SVSMLDLYIFG) == 0);
+    // Clear already set flags
+    PMMIFG &= ~(SVMLVLRIFG + SVMLIFG);
+    // Set VCore to new level
+    PMMCTL0_L = PMMCOREV_1 * level;
+    // Wait till new level reached
+    if ((PMMIFG & SVMLIFG))
+    while ((PMMIFG & SVMLVLRIFG) == 0);
+    // Set SVS/SVM low side to new level
+    SVSMLCTL = SVSLE | SVSLRVL_1 * level | SVMLE | SVSMLRRL_1 * level;
+    // Lock PMM registers for write access
+    PMMCTL0_H = 0x00;
+}
+
+inline void setVCoreDown()
+{
+    // Open PMM registers for write access
+    PMMCTL0_H = PMMPW_H;
+    // Set SVS/SVM high side new level
+    SVSMLCTL = SVSLE | SVSLRVL_0 | SVMLE | SVSMLRRL_0;
+    // Wait till SVM is settled
+    while ((PMMIFG & SVSMLDLYIFG) == 0);
+    // Clear already set flags
+    PMMIFG &= ~(SVMLVLRIFG | SVMLIFG);
+    // Set VCore to new level
+    PMMCTL0_L = PMMCOREV_0;
+    // Lock PMM registers for write access
+    PMMCTL0_H = 0x00;
+}
+
+inline void setVCoreUp()
+{
+    vCoreUp(1);
+    vCoreUp(2);
+}
+
+inline void setLowFrequency(){
+    UCSCTL2 = FLLD_3 | FLLN9;//Set divider for dcoclk
+}
+
+inline void setHighFrequency(){
+    UCSCTL2 = FLLD_1 | FLLN9;//Set divider for dcoclk
+}
+
+inline void setFrequency (){
+
+    UCSCTL3 |= SELREF__REFOCLK; //set DCO reference = REFo
+    UCSCTL4 |= SELM__DCOCLKDIV | SELA__DCOCLKDIV; //set MCLK and ACLK to DCOCLK
+
+
+    __bis_SR_register(SCG0); // Disable FLL control
+
+    UCSCTL0 |= DCO0;  // set lowest posible DCOx
+    UCSCTL0 |= MOD0;  // set lowest posible MODx
+
+    UCSCTL1 = DCORSEL_2; //Set 3 diap of DCO
+
+    setHighFrequency();
+    __bic_SR_register(SCG0);
+}
+
+
+int main(void) {
+    WDTCTL = WDTPW + WDTHOLD; // Stop watchdog timer
+
+    P1DIR |= LED1;
+    P1OUT &= ~LED1;
+    P1OUT |= LED1;
+
+    P1DIR |= BIT5; //led 8
+    P1OUT &= ~BIT5;
+
+    P8DIR |= LED3; // Set P8.1 to output direction
+    P8OUT &= ~LED3; // set P1.0 to 0 (LED OFF)
+
+    P1DIR |= LED4;
+    P1OUT &= ~LED4;
+    P1OUT |= LED4;
+
+    P1DIR |= LED5;
+    P1OUT &= ~LED5;
+
+    P1DIR &= ~BUT1; //SET BIT TO 0. INPUT PIN
+    P1REN |= BUT1;
+    P1OUT |= BUT1;
+
+    P2DIR &= ~BUT2; //SET BIT TO 0. INPUT PIN
+    P2REN |= BUT2;
+    P2OUT |= BUT2;
+
+    P1IE |= BUT1; // P1.7 interrupt enabled
+    P1IFG &= ~BUT1; // P1.3 IFG cleared
+
+    P2IE |= BUT2; // P1.7 interrupt enabled
+    P2IFG &= ~BUT2; // P1.3 IFG cleared
+
+
+    P7SEL |= BIT7;
+    P7DIR |= BIT7;
+
+    setFrequency();
+
+    TA0CCTL0 = CCIE;    // enable compare/capture interrupt
+    TA0CTL = TASSEL__ACLK | ID_1 | MC__CONTINOUS | TACLR;
+    TA0CTL &= ~TAIFG;
+
+    __enable_interrupt();
+    __no_operation();
+    return 0;
+}
+
+
+// Port 1 interrupt service routine
+#pragma vector=PORT1_VECTOR
+__interrupt void Port_1(void)
+{
+    P1IE &= ~BUT1;
+    BUT1_INT = TRUE;
+
+    TA1CCTL0 = CCIE;                  //enable timerA0 interrupts
+    TA1CCR0 = 200;                         //set value for timerA0 to count up to
+    TA1CTL = TASSEL__ACLK + MC_1 + ID_2 + TACLR + TAIE; //use SMCLK for timerA0, up mode, clear TA, /2
+}
+
+
+// Port 2 interrupt service routine
+#pragma vector=PORT2_VECTOR
+__interrupt void Port_2(void)
+{
+    P2IE &= ~BUT2;
+    BUT2_INT = TRUE;
+
+    TA1CCTL0 = CCIE;                  //enable timerA0 interrupts
+    TA1CCR0 = 200;                         //set value for timerA0 to count up to
+    TA1CTL = TASSEL__ACLK + MC_1 + ID_2 + TACLR + TAIE; //use SMCLK for timerA0, up mode, clear TA, /2
+
+}
+
+//#pragma vector = TIMER0_A0_VECTOR
+//__interrupt void TA0_ISR(void){
+//    P1OUT ^= BIT5;                         //set value for timerA0 to count up to
+//    TA0CCTL0 |= CCIE;                  //enable timerA0 interrupts
+//    TA0CTL =  TASSEL__INCLK + MC__CONTINUOUS + ID__8 + TAIE; //use ACLK for timerA0, up mode, TA, /2
+//
+//}
+#pragma vector = TIMER0_A0_VECTOR
+__interrupt void TA0_ISR(void){
+    TA0CTL &= ~TAIFG;
+    P1OUT ^= BIT5;
+}
+
+
+#pragma vector=TIMER1_A0_VECTOR
+__interrupt void TIMER1_ISR(void)
+{
+    TA1CTL = 0;
+    if (BUT1_INT) {
+        if (vCoreLow){
+            P1OUT |= LED4;
+            P1OUT &= ~LED5;
+            vCoreLow = FALSE;
+            setVCoreUp();
+            setHighFrequency();
+        } else {
+            P1OUT &= ~LED4;
+            P1OUT |= LED5;
+            vCoreLow = TRUE;
+            setVCoreDown();
+            setLowFrequency();
+        }
+
+        P1IFG &= ~BUT1; // P1.3 IFG cleared
+        BUT1_INT = FALSE;
+        P1IE |= BUT1;
+    }
+    if (BUT2_INT) {
+        if (lowPowerMode){
+                _BIC_SR_IRQ(LPM4_bits);
+                P1OUT |= LED1;
+                P8OUT &= ~LED3;
+                lowPowerMode = FALSE;
+            } else {
+                _BIS_SR_IRQ(LPM4_bits);
+                P1OUT &= ~LED1;
+                P8OUT |= LED3;
+                lowPowerMode = TRUE;
+            }
+
+            P2IFG &= ~BUT2; // P1.3 IFG cleared
+        BUT2_INT = FALSE;
+        P2IE |= BUT2;
+    }
+}

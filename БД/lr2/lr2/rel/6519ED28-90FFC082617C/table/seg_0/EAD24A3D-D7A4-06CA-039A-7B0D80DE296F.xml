@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EAD24A3D-D7A4-06CA-039A-7B0D80DE296F" name="Student">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>0E6A7F63-589D-D84C-508B-54968ED96E59</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Student number" id="6A880DED-3B8C-E396-54E9-AD9FEE8B3F83">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>1097F4EF-9BD0-CDEE-F03A-E3A5CCED3E0A</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="EAFA3C70-A91E-679B-EA17-3AFD94C8F76D">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>A8C71D2B-88D6-361F-4A6A-6948B7FFDC8B</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Type" id="D0A41BC8-E519-91F7-D022-3A52E942A07B">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>D4E1B8B0-EF2D-74B8-9379-88E5D45518F5</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Course" id="51E4B213-78B1-85DB-6568-D8B0C4B4D5BE">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>19193287-8CF8-7304-3DB9-0BD982F69B63</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9848B736-6E05-87DE-A9B8-0DB684CAC343" name="Student PK">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>14B4E6C0-5F88-2E94-8A86-E4E3493F291E</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6A880DED-3B8C-E396-54E9-AD9FEE8B3F83"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

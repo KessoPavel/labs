@@ -1,0 +1,89 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5C6A54C8-562F-F411-B742-5ACFAC246151" name="Furnirture">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>3919D0C4-132F-CFBC-74B3-5D69F84B465F</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Furniture number" id="B12C88CA-49E0-86AE-B0D3-7A35D55342E5">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>94195E85-02B7-4C86-80CF-15F7196EDC93</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="758796AB-2A98-AA79-C834-7C8B15BAD81E">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>2FE89AA6-4F9C-03B8-1066-7534D3D51A42</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Cost" id="5FDBB37C-3078-0FAE-D225-A335171CB238">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>414678CE-E703-1C2F-59D6-AA6244DB596D</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Room number" id="0CABB5E7-FBCA-8C44-A2F0-4A6589D6DF62">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>6814508B-8CAD-951A-EB0A-90A865834061</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<delegate>1FD66926-A0DE-5081-3C93-B5DBB9165862</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="592B4A15-48CD-46BB-BB78-70E20138F394" referredColumn="1FD66926-A0DE-5081-3C93-B5DBB9165862"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4E15C4B7-1B32-5C57-A8F0-4D2C98C1C8C4" name="Furnirture PK">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>6AC5F009-A1ED-9821-D853-9F08A138187F</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B12C88CA-49E0-86AE-B0D3-7A35D55342E5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B2B586B9-4D42-9765-3828-08C77F2CBFBD" name="Room contain furniture">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>3FAE2FF4-5AF0-E6BE-79EA-A85BB7B62FA0</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0CABB5E7-FBCA-8C44-A2F0-4A6589D6DF62"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

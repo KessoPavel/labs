@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AB642313-BC9D-84B2-2C1D-C7110C9BCF24" name="Employee responsibility">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<ownerDesignName>lr2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Employee_Employee number" id="98BC3133-A2F9-8717-7183-549CD0F03727">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<ownerDesignName>lr2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<delegate>C83D498C-33DD-F63F-1978-401A936D7272</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2A0FE4C1-49BE-2353-4420-69665C984011" referredColumn="C83D498C-33DD-F63F-1978-401A936D7272"/>
+</associations>
+</Column>
+<Column name="Floor_Number" id="05966CB2-605A-25A6-BCB9-BDD20B13FEFF">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<ownerDesignName>lr2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>8FFC8452-E88F-822C-B9D5-B9E623367856</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DE809618-0E87-2627-B83A-96F4ECC7ACD6" referredColumn="8FFC8452-E88F-822C-B9D5-B9E623367856"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D449C2F2-C46B-AC07-7615-3DFF83A8A2B4" name="Employee responsibility__IDX">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<ownerDesignName>lr2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="98BC3133-A2F9-8717-7183-549CD0F03727"/>
+<colUsage columnID="05966CB2-605A-25A6-BCB9-BDD20B13FEFF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A5A21CE1-1178-BEFB-9AB0-1CFC44B84110" name="FK_ASS_11">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>E4D4168B-9A61-07FC-C6BF-2F9B1AC4F1D3</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="98BC3133-A2F9-8717-7183-549CD0F03727"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6DE01E45-77D4-3F92-41CA-87CF4AB1BA0A" name="FK_ASS_12">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>E4D4168B-9A61-07FC-C6BF-2F9B1AC4F1D3</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="05966CB2-605A-25A6-BCB9-BDD20B13FEFF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

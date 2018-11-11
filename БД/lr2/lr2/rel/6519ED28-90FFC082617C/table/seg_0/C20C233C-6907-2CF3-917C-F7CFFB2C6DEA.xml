@@ -1,0 +1,35 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C20C233C-6907-2CF3-917C-F7CFFB2C6DEA" name="Floor">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>B9325202-90CD-D049-F5FB-39AF86BBF131</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Number" id="8FFC8452-E88F-822C-B9D5-B9E623367856">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>253A5C97-A442-4A09-4036-22F64BEB098F</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F2229F2A-0098-B79E-226A-24B1993B8AC4" name="Floor PK">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>03E26C91-BAB3-CAE4-CF95-9727E4838CC0</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8FFC8452-E88F-822C-B9D5-B9E623367856"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

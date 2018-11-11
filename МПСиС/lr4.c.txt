@@ -1,0 +1,174 @@
+#include <msp430.h>
+
+#define BOOL int
+#define TRUE 1
+#define FALSE 0
+
+#define LED1 BIT0 //P1.0 for Vref+
+#define LED3 BIT2 //P8.2 for for poten
+#define BUT1 BIT7 //P1.7
+#define LED_PAD4 BIT4 //P1.4 for pad4
+#define LED_PAD2 BIT2 //P1.2 for pad2
+#define PAD4 BIT3 //P6.3
+#define PAD2 BIT1 //P6.1
+#define POT BIT5 //P6.5
+
+
+BOOL BUT_INT = FALSE;
+BOOL ADC_MODE = FALSE;
+
+inline void config_pot(){
+    P6SEL |= BIT5;
+    P8DIR |= BIT0;
+    P8OUT |= BIT0;
+}
+
+
+inline void config_comp(){
+    CBCTL0 = CBIMEN | CBIPEN | CBIPSEL_3 | CBIMSEL_1;
+    CBCTL1 = CBF | CBFDLY_3 | CBIES;
+    CBCTL2 = CBREFL_3 | CBRS_0 | CBREF03 | CBREF13;
+    //CBCTL3 = ~(CBPD1 | CBPD3);
+    P6SEL = BIT1 | BIT3;
+    P6REN = ~(BIT1 | BIT3);
+    P6DIR = ~(BIT1 | BIT3);
+    P6DS = BIT1 | BIT3;
+    CBINT = CBIE;
+}
+
+inline void off_comp() {
+    CBCTL1 &= ~CBON;
+    P1OUT &= ~LED_PAD2;
+    P1OUT &= ~LED_PAD4;
+}
+
+inline void on_comp() {
+    CBCTL1 |= CBON;
+}
+
+inline void off_adc() {
+    ADC12CTL0 &= ~ADC12ON;
+    P8OUT &= ~LED3;
+    P1OUT &= ~LED1;
+}
+
+inline void on_adc() {
+    //ADC12CTL0 |= ADC12ENC | ADC12SC | ADC12ON;
+    ADC12CTL0 |= ADC12ENC | ADC12SC  | ADC12ON;
+}
+
+inline void config_adc(){
+
+    // Configure ADC12
+    // Turn on ADC and enable multiple conversions
+    ADC12CTL0 = ADC12REF2_5V | ADC12SHT0_12 | ADC12MSC;
+    // Sampling timer, single sequence
+    ADC12CTL1 |= ADC12SHP | ADC12CONSEQ_1;
+    // 12 bit conversion
+    ADC12CTL2 |= ADC12RES_3;
+    // Enable ADC  interrupt on MEM1
+    ADC12IE |= ADC12IE0 | ADC12IE1;
+    // pot
+    ADC12MCTL0 |= ADC12INCH_5;
+    // A4 select, Vref+, End of Sequence
+    ADC12MCTL1 |= ADC12INCH_8;
+    //ADC12CTL0 |= ADC12ENC | ADC12SC;
+}
+
+/*
+ * main.c
+ */
+int main(void) {
+
+    WDTCTL = WDTPW | WDTHOLD;   // Stop watchdog timer
+    P1DIR |= LED1 | LED_PAD2 | LED_PAD4;//config leds
+
+    P8DIR |= LED3;
+
+    P1DIR &= ~BUT1; //config buttons
+    P1REN |= BUT1;
+    P1OUT |= BUT1;
+    P1IE |= BUT1;
+
+    P6DIR &= ~(PAD2 | PAD4 | POT); //config pot and pads
+    P6SEL |= (PAD2 | PAD4 | POT);
+
+    config_pot();
+    config_adc();
+    off_adc();
+    config_comp();
+    on_comp();
+
+
+    __enable_interrupt();
+
+    __no_operation();
+
+    return 0;
+}
+
+
+#pragma vector = ADC12_VECTOR
+__interrupt void ADC12_ISR ( void ) {
+    if (ADC12MEM0 > ADC12MEM1){
+        P8OUT |= LED3;
+        P1OUT &= ~LED1;
+    } else {
+        P8OUT &= ~LED3;
+        P1OUT |= LED1;
+    }
+}
+
+#pragma vector=COMP_B_VECTOR
+__interrupt void COMPA_ISR(void) {
+  if (CBCTL1 & CBOUT) {
+    CBCTL1 |= CBIES;    // value high, so watch for
+    P1OUT |= LED_PAD2;
+    P1OUT &= ~LED_PAD4;
+
+  }
+  else {
+    CBCTL1 &= ~CBIES;    // value low, so watch for
+    P1OUT &= ~LED_PAD2;
+    P1OUT |= LED_PAD4;// rising edge
+  }
+  CBINT &= ~ CBIFG;
+
+}
+
+
+#pragma vector=TIMER1_A0_VECTOR
+__interrupt void TIMER1_ISR(void)
+{
+    TA1CTL = 0;
+    if (BUT_INT && ~(P1OUT & BUT1)) {
+        if (ADC_MODE){
+            off_adc();
+            //config_comp();
+            on_comp();
+            ADC_MODE = FALSE;
+        } else {
+            on_adc();
+            off_comp();
+            config_adc();
+            ADC_MODE = TRUE;
+        }
+
+        P1IFG &= ~BUT1; // P1.3 IFG cleared
+        BUT_INT = FALSE;
+        P1IE |= BUT1;
+    }
+}
+
+
+// Port 1 interrupt service routine
+#pragma vector=PORT1_VECTOR
+__interrupt void Port_1(void)
+{
+    P1IE &= ~BUT1;
+    BUT_INT = TRUE;
+
+    TA1CCTL0 = CCIE;                  //enable timerA0 interrupts
+    TA1CCR0 = 200;                         //set value for timerA0 to count up to
+    TA1CTL = TASSEL__ACLK + MC_1 + ID_2 + TACLR + TAIE; //use SMCLK for timerA0, up mode, clear TA, /2
+}

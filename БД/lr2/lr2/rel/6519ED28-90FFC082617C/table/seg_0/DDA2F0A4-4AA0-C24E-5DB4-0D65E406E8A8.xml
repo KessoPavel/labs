@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DDA2F0A4-4AA0-C24E-5DB4-0D65E406E8A8" name="Hostel unit">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>64A8A94F-5C34-F484-0C88-0E953D72F077</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Hostel unit number" id="EC44C69B-29EF-1150-342A-8BC6A3BF309D">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>50AD3DCD-EAE7-0689-DC35-F7AB11239E72</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="type" id="CC8751F4-CE54-DAAE-78B1-91D84127B612">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>525E46ED-DEA0-9249-9D2B-6D98276A5DD4</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Number" id="B27B0174-EC14-A817-2F35-BDB946BEF105">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>426361C7-DD10-6852-9167-44C1742E425B</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>8FFC8452-E88F-822C-B9D5-B9E623367856</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F9E6CA3A-D795-0797-066C-AACE1F55ABF2" referredColumn="8FFC8452-E88F-822C-B9D5-B9E623367856"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="467BCD13-496E-8E7F-150E-5DAE3BD3DFF6" name="Hostel unit PK">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>A0D8388E-E266-44B9-C76B-7D119964C8E6</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EC44C69B-29EF-1150-342A-8BC6A3BF309D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E3BD09F2-FB80-899A-0753-34C0000A1F61" name="Floor content hostel unit">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>E39F5660-C68B-2C44-62F4-0C7D83E63FA2</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B27B0174-EC14-A817-2F35-BDB946BEF105"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

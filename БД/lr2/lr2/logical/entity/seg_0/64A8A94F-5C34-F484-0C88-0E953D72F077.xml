@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="64A8A94F-5C34-F484-0C88-0E953D72F077" name="Hostel unit">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:10:07 UTC</createdTime>
+<ownerDesignName>lr2</ownerDesignName>
+<engineerTo>
+<item key="6519ED28-27A7-32CC-9D3D-90FFC082617C" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Hostel unit number" id="50AD3DCD-EAE7-0689-DC35-F7AB11239E72">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:11:02 UTC</createdTime>
+<ownerDesignName>lr2</ownerDesignName>
+<engineerTo>
+<item key="6519ED28-27A7-32CC-9D3D-90FFC082617C" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+</Attribute>
+<Attribute name="type" id="525E46ED-DEA0-9249-9D2B-6D98276A5DD4">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:11:37 UTC</createdTime>
+<ownerDesignName>lr2</ownerDesignName>
+<engineerTo>
+<item key="6519ED28-27A7-32CC-9D3D-90FFC082617C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+</Attribute>
+<Attribute name="Number" id="426361C7-DD10-6852-9167-44C1742E425B">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:26:17 UTC</createdTime>
+<generatorID>E39F5660-C68B-2C44-62F4-0C7D83E63FA2</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<engineerTo>
+<item key="6519ED28-27A7-32CC-9D3D-90FFC082617C" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>253A5C97-A442-4A09-4036-22F64BEB098F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="A0D8388E-E266-44B9-C76B-7D119964C8E6" name="Hostel unit PK">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:11:36 UTC</createdTime>
+<ownerDesignName>lr2</ownerDesignName>
+<engineerTo>
+<item key="6519ED28-27A7-32CC-9D3D-90FFC082617C" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>50AD3DCD-EAE7-0689-DC35-F7AB11239E72</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

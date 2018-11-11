@@ -1,0 +1,78 @@
+#include <msp430.h> 
+#define BOOL unsigned char
+#define TRUE 1
+#define FALSE 0
+
+
+int delay(long n){
+	volatile int x = 15;
+	volatile int y = 20;
+	int i = 0;
+
+	for(;i < n;){
+		x += (x * n);
+		y /= x;
+		i++;
+		x = 145;
+	}
+	return x;
+}
+
+
+/*
+ * main.c
+ */
+int main(void) {
+    WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
+
+    volatile unsigned char prev_P17 = BIT7;
+    volatile unsigned char prev_P22 = BIT2;
+    volatile unsigned char cur_P17 = 0;
+    volatile unsigned char cur_P22 = 0;
+    volatile BOOL blink = FALSE;
+
+
+    P1DIR &= ~BIT7; //SET BIT TO 0. INPUT PIN
+    P1REN &= ~BIT7;
+
+
+    P2DIR &= ~BIT2; //SET BIT TO 0. INPUT PIN
+    P2REN &= ~BIT2;
+
+    P8DIR |= BIT1;	//SET BIT TO 1. OUTPUT PIN
+    P8OUT &= ~BIT1;
+
+    P1DIR |= BIT0;	//SET BIT TO 1. OUTPUT PIN
+    P1OUT &= ~BIT0;
+
+    while (TRUE){
+    	delay(500);
+    	cur_P17 = P1IN;
+    	cur_P22 = P2IN;
+
+    	if ((prev_P17 & BIT7) == BIT7){
+    		if (((~cur_P17) & BIT7) == BIT7){
+    			P1OUT |= BIT0;
+    			delay(100);
+    			P1OUT &= ~BIT0;
+    		}
+    	}
+
+    	blink ^= ((((prev_P17 & (~cur_P17)) >> 7) | ((prev_P22 & (~cur_P22)) >> 2)) & BIT0);
+
+    	if (blink == TRUE){
+    		P8OUT |= BIT1;
+    		delay(500);
+    		P8OUT &= ~BIT1;
+    		delay(500);
+    	}
+
+
+    	prev_P17 = cur_P17;
+    	prev_P22 = cur_P22;
+
+    }
+	
+	return 0;
+
+}

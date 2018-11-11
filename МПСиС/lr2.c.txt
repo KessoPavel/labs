@@ -1,0 +1,116 @@
+#include <msp430.h>
+ 
+#define LED1 BIT0 //P1.0
+#define LED3 BIT2 //P8.2
+#define BUT1 BIT7 //P1.7
+#define BUT2 BIT2 //P2.2
+ 
+ 
+int BUT1_INT = 0;
+int BUT2_INT = 0;
+ 
+int main(void)
+{
+    WDTCTL = WDTPW + WDTHOLD; // Stop watchdog timer
+ 
+    P1DIR |= LED1;
+    P1OUT &= ~LED1;
+ 
+    P8DIR |= LED3; // Set P8.1 to output direction
+    P8OUT &= ~LED3; // set P1.0 to 0 (LED OFF)
+ 
+    P1DIR &= ~BUT1; //SET BIT TO 0. INPUT PIN
+    P1REN |= BUT1;
+    P1OUT |= BUT1;
+ 
+    P2DIR &= ~BUT2; //SET BIT TO 0. INPUT PIN
+    P2REN |= BUT2;
+    P2OUT |= BUT2;
+ 
+    P1IE |= BUT1; // P1.7 interrupt enabled
+    P1IFG &= ~BUT1; // P1.3 IFG cleared
+ 
+    P2IE |= BUT2; // P1.7 interrupt enabled
+    P2IFG &= ~BUT2; // P1.3 IFG cleared
+ 
+    // enable all user interrupts
+    __bis_SR_register(LPM0_bits | GIE);
+ 
+    __no_operation();
+}
+ 
+ 
+// Port 1 interrupt service routine
+#pragma vector=PORT1_VECTOR
+__interrupt void Port_1(void)
+{
+    P1IE &= ~BUT1;
+    BUT1_INT = 1;
+ 
+    TA1CCTL0 = CCIE;                  //enable timerA0 interrupts
+    TA1CCR0 = 200;                         //set value for timerA0 to count up to
+    TA1CTL = TASSEL_1 + MC_1 + ID_2 + TACLR + TAIE; //use SMCLK for timerA0, up mode, clear TA, /2
+ 
+    P1IFG &= ~BUT1; // P1.3 IFG cleared
+}
+ 
+#pragma vector=PORT2_VECTOR
+__interrupt void Port_2(void)
+{
+    P2IE &= ~BUT2;
+    BUT2_INT = 1;
+ 
+    TA1CCTL0 = CCIE;                  //enable timerA0 interrupts
+    TA1CCR0 = 200;                         //set value for timerA0 to count up to
+    TA1CTL = TASSEL_1 + MC_1 + ID_2 + TACLR + TAIE; //use SMCLK for timerA0, up mode, clear TA, /2
+ 
+    P2IFG &= ~BUT2; // P1.3 IFG cleared
+}
+ 
+#pragma vector=TIMER0_A0_VECTOR
+__interrupt void TIMER_ISR(void)
+{
+    TA0CTL = 0;
+    P1OUT &= ~LED1;
+    P8OUT &= ~LED3;
+}
+ 
+#pragma vector=TIMER1_A0_VECTOR
+__interrupt void TIMER1_ISR(void)
+{
+    TA1CTL = 0;
+    if (BUT1_INT){
+        if ((P1IES & BUT1) && (~P1IN & BUT1)) {
+            P1OUT |= LED1; // LED1 toggle
+            TA0CCTL0 = CCIE;                  //enable timerA0 interrupts
+            TA0CCR0 = 2000;                         //set value for timerA0 to count up to
+            TA0CTL = TASSEL_1 + MC_1 + ID_2 + TACLR + TAIE; //use SMCLK for timerA0, up mode, clear TA, /2
+        } else if (((P1IES & BUT1) == 0) && (P1IN & BUT1)){
+            P8OUT |= LED3; // LED3 toggle
+            TA0CCTL0 = CCIE;                  //enable timerA0 interrupts
+            TA0CCR0 = 2000;                         //set value for timerA0 to count up to
+            TA0CTL = TASSEL_1 + MC_1 + ID_2 + TACLR + TAIE; //use SMCLK for timerA0, up mode, clear TA, /2
+        }
+        P1IES ^= BUT1; // toggle the interrupt edge,
+        BUT1_INT = 0;
+        P1IE |= BUT1;
+    }
+ 
+    if (BUT2_INT){
+        if ((P2IES & BUT2) && (~P2IN & BUT2)) {
+            P1OUT |= LED1; // LED1 toggle
+            TA0CCTL0 = CCIE;                  //enable timerA0 interrupts
+            TA0CCR0 = 2000;                         //set value for timerA0 to count up to
+            TA0CTL = TASSEL_1 + MC_1 + ID_2 + TACLR + TAIE; //use SMCLK for timerA0, up mode, clear TA, /2
+        } else if (((P2IES & BUT2) == 0) && (P2IN & BUT2)){
+            P8OUT |= LED3; // LED3 toggle
+            TA0CCTL0 = CCIE;                  //enable timerA0 interrupts
+            TA0CCR0 = 2000;                         //set value for timerA0 to count up to
+            TA0CTL = TASSEL_1 + MC_1 + ID_2 + TACLR + TAIE; //use SMCLK for timerA0, up mode, clear TA, /2
+        }
+        P2IES ^= BUT2; // toggle the interrupt edge,
+        BUT2_INT = 0;
+        P2IE |= BUT2;
+    }
+ 
+}

@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F9E6CA3A-D795-0797-066C-AACE1F55ABF2" name="Floor content hostel unit">
+<createdBy>oracle</createdBy>
+<createdTime>2018-10-31 06:43:10 UTC</createdTime>
+<generatorID>E39F5660-C68B-2C44-62F4-0C7D83E63FA2</generatorID>
+<ownerDesignName>lr2</ownerDesignName>
+<containerWithKeyObject>DDA2F0A4-4AA0-C24E-5DB4-0D65E406E8A8</containerWithKeyObject>
+<deleteRule>NO ACTION</deleteRule>
+<localFKIndex>E3BD09F2-FB80-899A-0753-34C0000A1F61</localFKIndex>
+<keyObject>F2229F2A-0098-B79E-226A-24B1993B8AC4</keyObject>
+<mandatory>false</mandatory>
+<transferable>true</transferable>
+</FKIndexAssociation>
